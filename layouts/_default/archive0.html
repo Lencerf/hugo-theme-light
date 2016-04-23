@@ -1,0 +1,45 @@
+<!--<%
+var title = '';
+if (page.category) title = page.category;
+if (page.tag) title = page.tag;
+if (page.archive){
+  if (page.year) title = page.year + (page.month ? '/' + page.month : '');
+  else title = __('archive_a');
+}
+%>-->
+<h2 class="archive-title {{.Data.Singular}}">{{ .Title }}</h2>
+<div class="archive">
+{{ range (.Paginate .Data.Pages).Pages }}
+  {{ if ne .Title "Homepage" }}         
+    <article class="post">
+      <div class="post-content">
+        <header>          
+          <h3 class="title"><archive-time>{{ with .Site.Params.DateForm }}{{ $.Date.Format . }}{{ else }}{{ $.Date.Format "Mon, Jan 2, 2006" }}{{ end }}</archive-time>　
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+        </header>
+      </div>
+    </article>
+  {{ end }}
+{{ end }}
+</div><!--
+  <% page.posts.each(function(item){ %>
+    <% if (! item.homepage){ %>
+    <article class="<%= item.layout %>">
+      <div class="post-content">
+        <header>
+          <% if (item.link){ %>
+            <% if (item.title){ %>
+              <h3 class="title link"><archive-time><%= item.date.format("YYYY-MM-DD") %></archive-time>　<a href="<%- item.link %>" target="_blank"><%= item.title %></a></h3>
+            <% } else { %>
+              <h3 class="title link"><archive-time><%= item.date.format("YYYY-MM-DD") %></archive-time>　<a href="<%- item.link %>" target="_blank"><%= item.link %></a></h3>
+            <% } %>
+          <% } else { %>
+            <h3 class="title"><archive-time><%= item.date.format("YYYY-MM-DD") %></archive-time>　<a href="<%- config.root %><%- item.path %>"><%= item.title %></a><h3>
+          <% } %>
+        </header>
+      </div>
+    </article>
+}
+}
+</div>-->

@@ -1,0 +1,30 @@
+<article class="post">
+  <div class="post-content">
+  {{if ne .Title "Homepage"}}
+    <header>
+      <h1 class="title">{{ .Title }}</h1>
+      <div style="margin-top:5px">
+      <time itemprop="datePublished" pubdate="pubdate" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ with .Site.Params.DateForm }}{{ $.Date.Format . }}{{ else }}{{ $.Date.Format "January 2, 2006" }}{{ end }}</time>
+      </div>
+    </header>
+  {{end}}
+    <div class="entry">
+      {{ .Content }}
+    </div>
+    <footer>
+    {{ with .Params.tags }}
+    <span class="tags">
+    {{ range . }}<a href="{{ $.Site.BaseURL}}tags/{{ . | urlize }}">{{ . }}</a>,  
+    {{ end }}  </span>
+    {{ end }}
+
+    {{ with .Params.categories }}
+    <span class="categories">
+    {{ range . }}<a href="{{ $.Site.BaseURL}}categories/{{ . | urlize }}">{{ . }}</a>
+    {{ end }}  </span>
+    {{ end }}
+    </footer>
+  </div>
+</article>
+
+{{partial "comment.html" .}}

@@ -1,0 +1,9 @@
+<!--<footer class="site">
+  <p>{{ with .Site.Copyright | safeHTML }}{{ . }}{{ else }}&copy; {{ $.Site.LastChange.Year }} {{ if isset $.Site.Params "Author" }}{{ $.Site.Params.Author }}{{ else }}{{ .Site.Title }}{{ end }}{{ end }} | Powered by <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a></p>
+</footer>-->
+<footer id="footer" class="inner">
+<div style="text-align:center">
+	{{ with .Site.Copyright | safeHTML }}{{ . }}{{ else }}&copy; {{ $.Site.LastChange.Year }} {{ if isset $.Site.Params "Author" }}{{ $.Site.Params.Author }}{{ else }}{{ .Site.Title }}{{ end }}{{ end }} | Powered by <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a> | <a href="http://creativecommons.org/licenses/by-nc/4.0/"> License</a> | <a href="/index.xml" target="_blank"> <span style="font-family:FontAwesome"></span></a>
+</div>
+<div class="clearfix"></div>
+</footer>

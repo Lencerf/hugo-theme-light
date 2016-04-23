@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+{{ partial "head.html" . }}
+<body>
+	<header id="header" class="inner" style="min-height:80px">{{ partial "header.html" . }}</header>
+	<!--<header class="site">
+		<div class="title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></div>
+	</header>-->
+	<div id="content" class="inner">
+	    <div id="main-col" class="alignleft">
+		    <div id="wrapper">{{ partial "article" .}}</div>
+		</div>
+		<aside id="sidebar" class="alignright">{{ partial "sidebar.html" . }}</aside>
+	    <div class="clearfix"></div>
+	</div>
+	{{ partial "footer.html" . }}
+	{{ partial "after_footer.html" . }}
+</body>
+</html>

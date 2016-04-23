@@ -1,0 +1,75 @@
+{{if .IsHome}}
+<div class="widget tag">
+  <h3 class="title">LINKS</h3>
+  <ul class="entry">
+    {{ range .Site.Menus.links }}
+      <li><a href="{{.URL}}" target="_BLANK">{{.Name}}</a></li>
+    {{end}}
+  </ul>
+</div>
+{{end}}
+
+{{ if and .IsPage (eq .Params.toc true) }}
+<div class="widget tag">
+  <h3 class="title">Table Of Contents</h3>
+  <div class="entry">
+  {{ .TableOfContents }}
+  </div>
+</div>
+{{ end }}
+
+<div class="widget tag">
+  <h3 class="title">RECENT POSTS</h3>
+  <ul class="entry">
+    {{ range first 7 (where .Site.Pages "Type" "post") }}
+      <li>▪ <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+
+<!--
+<div class="widget tag">
+  <h3 class="title">CATEGORIES</h3>
+  <ul class="entry">
+    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+          <li><a href="/categories/{{ $name | urlize }}">{{ $name }}</a></li>
+    {{end}}
+  </ul>
+</div>-->
+
+<div class="widget tag">
+  <h3 class="title">CATEGORIES</h3>
+  <ul class="entry">
+    {{ range $key, $value := .Site.Taxonomies.categories.ByCount }}
+      <li><a href="/categories/{{ $value.Name | urlize }}">{{ $value.Name }} ({{$value.Count}})</a></li>
+    {{ end }}
+  </ul>
+</div>
+
+{{if eq .IsPage false}}
+<div class="widget tag">
+  <h3 class="title">TAGS</h3>
+  <ul class="entry">
+    {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+      <span><a href="/tags/{{ $key| urlize }}">#{{ $key }}</a> </span>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
+
+<!--
+{{if eq .IsPage false}}
+{{ range $key, $value := .Site.Taxonomies }}
+{{if ne $key "archives"}}
+<div class="widget tag">
+  <h3 class="title">{{ $key | upper}}</h3>
+  <ul class="entry">
+    {{ range first 10 $value.ByCount }}
+     <li><a href="{{ $.Site.BaseURL}}{{ $key }}/{{ .Name | urlize }}">{{ .Name }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
+{{ end }}
+{{ end }}
+-->
