@@ -1,7 +1,7 @@
 <head>
 <meta charset="utf-8">
 {{ .Hugo.Generator }}
-
+<link rel="canonical" href="{{ .Site.BaseURL }}">
 <link rel="stylesheet" href="/css/styles.css">
 {{ if eq .URL "/" }}
 <title>{{ .Title }}</title>
