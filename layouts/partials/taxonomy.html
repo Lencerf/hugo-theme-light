@@ -16,7 +16,7 @@ if (page.archive){
         <header>          
           <h3 class="title">
           <archive-time>{{ .Date.Format "2006-01-02" }}</archive-time>
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
           </h3>
         </header>
       </div>

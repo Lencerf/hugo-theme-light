@@ -21,7 +21,7 @@
 <div class="widget tag">
   <h3 class="title">RECENT POSTS</h3>
   <ul class="entry">
-    {{ range first 7 (where .Site.Pages "Type" "post") }}
+    {{ range first 4 (where .Site.Pages "Type" "post") }}
       <li>▪ <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}
   </ul>
@@ -37,6 +37,8 @@
   </ul>
 </div>-->
 
+{{if eq .IsHome false}}
+
 <div class="widget tag">
   <h3 class="title">CATEGORIES</h3>
   <ul class="entry">
@@ -46,7 +48,6 @@
   </ul>
 </div>
 
-{{if eq .IsPage false}}
 <div class="widget tag">
   <h3 class="title">TAGS</h3>
   <ul class="entry">
@@ -55,6 +56,7 @@
     {{ end }}
   </ul>
 </div>
+
 {{ end }}
 
 <!--
