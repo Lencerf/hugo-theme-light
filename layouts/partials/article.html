@@ -3,12 +3,14 @@
   {{if ne .Title "Homepage"}}
     <header>
       <h1 class="title">{{ .Title }}</h1>
+      {{if ne .Params.notime true}}
       <div style="margin-top:5px">
       <time itemprop="datePublished" pubdate="pubdate" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ with .Site.Params.DateForm }}{{ $.Date.Format . }}{{ else }}{{ $.Date.Format "January 2, 2006" }}{{ end }}</time>
       </div>
+      {{end}}
     </header>
   {{end}}
-    <div class="entry">
+    <div class="entry" id="article-content">
       {{ .Content }}
     </div>
     <footer>

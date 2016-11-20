@@ -44,8 +44,12 @@
             </div>
             <div id="Layer1">
                 <nav class="codrops-demos">
-                    <a href="/archives/archives/">Blog</a>
-                    <a href="https://twitter.com/{{ .Site.Params.twitter }}">Twitter</a>
+                    {{ range .Site.Menus.links }}
+                          <a href="{{ .URL }}">{{ .Name }}</a>
+                          <!--<a href="/archives/archives/">Blog</a>-->
+                    {{end}}
+                    
+                    <!--<a href="https://github.com/{{ .Site.Params.github }}">GitHub</a>-->
                 </nav>
             </div>
         </div>

@@ -21,7 +21,7 @@
 <div class="widget tag">
   <h3 class="title">RECENT POSTS</h3>
   <ul class="entry">
-    {{ range first 4 (where .Site.Pages "Type" "post") }}
+    {{ range first .Site.Params.recentPostCount (where .Site.Pages "Type" "post") }}
       <li>▪ <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}
   </ul>
@@ -43,7 +43,7 @@
   <h3 class="title">CATEGORIES</h3>
   <ul class="entry">
     {{ range $key, $value := .Site.Taxonomies.categories.ByCount }}
-      <li><a href="/categories/{{ $value.Name | urlize }}">{{ $value.Name }} ({{$value.Count}})</a></li>
+      <li><a href="/categories/{{ $value.Name | urlize }}">{{ $value.Name }}</a> ({{$value.Count}})</li>
     {{ end }}
   </ul>
 </div>
